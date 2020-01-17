@@ -30,7 +30,7 @@ RUN apt-get install -y build-essential gdb
 RUN apt-get install -y gcc-multilib qemu-system-common
 
 # Copy folder contents onto system's home directory
-ADD xv6-public $HOME/xv6-public
+# ADD xv6-public $HOME/xv6-public
 
 CMD []
 
