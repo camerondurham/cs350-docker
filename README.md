@@ -17,6 +17,8 @@ This image is based on a 32-bit image required for this class. I'm using
 - `gcc-multilib` for 32-bit library support
 - `xv6-public` a slimmed-down, simplified operating system based on UNIX v6
 
+To match the CS350 VM, the commit being used is: `b818915`
+
 
 
 ## Getting Started
