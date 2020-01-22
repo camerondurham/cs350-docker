@@ -31,14 +31,16 @@ directory `/home/work/` running bash. This will only work after running
 the build script `./build.sh`.
 
 ```shell
-# start cs-104 docker image in cs104 directory
+# start cs350 docker image in cs350 directory
 docker run -it -v "$HOME/projects/cs350-docker/":/home/work -w /home/work/ cs350 /bin/bash
 ```
 
-## Docker Commands
+## Docker Commands for Reference
 
 ```shell
+
 # create image from source code and Dockerfile
+# this is what build.sh will do for you
 docker build <directory>
 docker build .
 
@@ -56,9 +58,18 @@ About the following command, which you should use to run the image:
 - `--security-opt seccomp=unconfined` allows memory allocation and debugging to work correctly
 - `--name <NAME>` gives the container a name to reference in other docker commands
 
+
+How to run the image:
+
 ```bash
+# start the image running in the background
 docker run -v <PATH TO DEV FOLDER>:/work/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined --name cs350 cs350
+
+# start the image and run interactively for gdb access in the current working directory
+docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined  -v "$(pwd)":/root -w /root cs350 /bin/bash
 ```
+
+To make it easier, I added these aliases to my .bashrc
 
 
 ## TODO
