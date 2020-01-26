@@ -29,5 +29,5 @@ RUN apt-get update
 RUN apt-get install -y build-essential gdb
 RUN apt-get install -y gcc-multilib qemu-system-common qemu
 
-CMD []
-
+# Add bashrc with sligtly better prompt
+COPY ./util/* /root/
