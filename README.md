@@ -8,6 +8,10 @@ Current status: the image builds `xv6-public` without errors after running
 I've only included the xv6-public folder for testing purposes for anyone
 apprehensive about this Docker environment working.
 
+Here's what the process of booting into the environment looks like:
+
+[![asciicast](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn.svg)](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn)
+
 ## Image Contents
 
 You may choose between a 32-bit image or a 64-bit Docker image. Either will
