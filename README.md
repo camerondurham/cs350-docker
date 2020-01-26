@@ -10,7 +10,7 @@ apprehensive about this Docker environment working.
 
 Here's what the process of booting into the environment looks like:
 
-[![asciicast](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn.svg)](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn)
+[![asciicast](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn.svg)](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn?t=7)
 
 ## Image Contents
 
