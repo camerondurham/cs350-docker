@@ -23,9 +23,33 @@ work with xv6.
 - `gcc-multilib` for 32-bit library support
 - `xv6-public` a slimmed-down, simplified operating system based on UNIX v6
 
+## System Requirements
+
+Below are the system requirements for Docker Desktop:
+
+[Windows host](https://docs.docker.com/docker-for-windows/install/):
+
+- Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later).
+- Hyper-V and Containers Windows features must be enabled.
+
+If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/).
+
+[Mac host](https://docs.docker.com/docker-for-mac/install/):
+
+- Mac hardware must be a 2010 or newer model
+- macOS must be version 10.13 or newer
+- 4 GB RAM minimum
+
 
 ## Getting Started
 
+First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
+Once done, **clone this repository**. If you're using macOS or Linux, you can run the `build32.sh` or `build64.sh` to build 32-bit or 64-bit images, respectively. These are just **really** simple scripts that build the appropriate Dockerfile. If you're on Windows, you should just be able to run a variant of the following command:
+
+```shell
+# build the docker image
+docker build -t cs350_32 -f ./32-bit/Dockerfile  .
+```
 
 To start working on homework, you can run the following command. This
 will mount a folder into the image and use the running container's name
@@ -64,7 +88,7 @@ About the following command, which you should use to run the image:
 - `--name <NAME>` gives the container a name to reference in other docker commands
 
 
-How to run the image:
+### How to run the image
 
 ```bash
 # start the image running in the background
