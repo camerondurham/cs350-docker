@@ -1,0 +1,20 @@
+# From: https://github.com/shuhaoliu/docker-clion-dev/blob/master/docker-compose.yml
+
+version: '3'
+
+services:
+  gdbserver:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.remote-env
+    image: xv6_docker
+    security_opt:
+      - seccomp:unconfined
+    container_name: xv6_docker
+    ports:
+      - "7776:22"
+      - "7777:7777"
+    volumes:
+        - ${work}:/xv6_docker/
+    working_dir: /xv6_docker/
+    hostname: xv6_host

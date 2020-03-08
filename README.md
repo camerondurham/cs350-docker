@@ -1,27 +1,27 @@
 # CSCI 350 Operating Systems Image
 
-This repo is my attempt at creating a Docker image to do my operating systems
-development. Inspiration from [cs104/docker](https://github.com/csci104/docker).
+This repo is my attempt at creating a Docker image to do my operating systems development. After building the image, you should be able to use the `run.sh` script to start, stop, and work in a virtualized environment all from your command line!
 
-Current status: the image builds `xv6-public` without errors after running
-`./build32.sh` or `./build64.sh` and mounting the `xv6-public` as a volume.
-I've only included the xv6-public folder for testing purposes for anyone
-apprehensive about this Docker environment working.
+Inspiration from [Noah Kim's](https://github.com/noahbkim) [cs104/docker](https://github.com/csci104/docker).
 
-Here's what the process of booting into the environment looks like:
+Here's what it looks like to interact with a setup environment:
 
-[![asciicast](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn.svg)](https://asciinema.org/a/5J991uMx9h0pa5oJipuCGSRKn?t=7)
+[![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
+
+NOTE: The `run.sh` script will only work on Unix systems. However, I've included notes for the exact commands you should run on a Windows system.
 
 ## Image Contents
 
-You may choose between a 32-bit image or a 64-bit Docker image. Either will
-work with xv6.
+You can test and build xv6 code in either a 32-bit or 64-bit environment. The `docker-compose.yml` builds from the `Dockerfile.remote-cpp-env` build file, that uses a 64-bit Ubuntu as a base image.
 
 - `qemu` open source machine emulator and virtualizer for OS debugging
 - `build-essential` for C support
 - `gdb` for debugging, obviously
 - `gcc-multilib` for 32-bit library support
 - `xv6-public` a slimmed-down, simplified operating system based on UNIX v6
+- `gcc` since we need C support, of course!
+- `rsync` and `openssh-server` to sync with IDE's like CLion and easily connect to the environment
+- `cmake` for configurable makefile support
 
 ## System Requirements
 
@@ -40,76 +40,97 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 - macOS must be version 10.13 or newer
 - 4 GB RAM minimum
 
-
 ## Getting Started
 
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
-Once done, **clone this repository**. If you're using macOS or Linux, you can run the `build32.sh` or `build64.sh` to build 32-bit or 64-bit images, respectively. These are just **really** simple scripts that build the appropriate Dockerfile. If you're on Windows, you should just be able to run a variant of the following command:
+Once done, **clone this repository**.
+
+### Building the Image
+
+Building the image should require two steps.
+
+1. specify your desired mount location (i.e. your `xv6` project folder)
+2. build the image
+
+
+
+**Unix-based Users**: 
+
+1. Modify the `run.sh` file's `work` variable at the top of the file to be your project folder.
+For example:
 
 ```shell
-# build the docker image
-docker build -t cs350_32 -f ./32-bit/Dockerfile  .
+work=~/projects/cs350/xv6-public-master/
 ```
 
-To start working on homework, you can run the following command. This
-will mount a folder into the image and use the running container's name
-tagged in the previous command. Start the interactive terminal in the
-directory `/root` running bash. This will only work after running
-the build script `./build32.sh`.
+2. Run the `run.sh` script will check if you've built an image yet, then either
+build and start or just start the container:
 
 ```shell
-# start 32-bit cs350_32 docker image in cs350 directory
-docker run -it -v "$HOME/projects/cs350-docker/":/root -w /root cs350_32 /bin/bash
-
-# start 64-bit cs350_64 docker image in cs350 directory
-docker run -it -v "$HOME/projects/cs350-docker/":/root -w /root cs350_64 /bin/bash
+./run.sh start
 ```
 
-## Docker Commands for Reference
+This script is only a wrapper for some simple Docker commands.
+
+**Windows Users**: I need to still write some support for volume mounting. For now, please follow these steps:
+
+1. In `docker-compose.yml`, change line below the `volumes` rule to mount your desired project folder.
+
+For example, change this:
+
+```yml
+    volumes:
+        - ${work}:/xv6_docker/
+```
+
+to this:
+
+```yml
+    volumes:
+        - C:\Username\xv6-public-master:/xv6_docker/
+```
+
+2. Run this command to build the environment:
 
 ```shell
-# create image from source code and Dockerfile
-# this is what build.sh will do for you
-docker build <directory>
-docker build .
-
-# run docker container interactively
-docker run -it <CONTAINER NAME> <WHAT TO RUN>
-docker run -it linux-box /bin/bash
+docker-compose up -d
 ```
 
-About the following command, which you should use to run the image:
+### Working in the Environment
 
-- `-v /path/to/material/:/root/` mounts the work folder on our machine to `/root` in the container
-- `-d` runs the container in the background
-- `-t` allocates a command prompt for us to access when we interact with the container
-- `--cap-add SYS_PTRACE` will allow GDB to correctly access executable runtimes
-- `--security-opt seccomp=unconfined` allows memory allocation and debugging to work correctly
-- `--name <NAME>` gives the container a name to reference in other docker commands
+To start up a Linux shell inside the Docker image, you'll want to start a terminal session inside the Docker image:
 
-
-### How to run the image
-
-```bash
-# start the image running in the background
-docker run -v <PATH TO DEV FOLDER>:/root/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined --name cs350 cs350_<32 OR 64>
-
-# start the image and run interactively for gdb access in the current working directory
-docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined  -v "$(pwd)":/root -w /root cs350 /bin/bash
-```
-
-To make it easier, I added these aliases to my `.bashrc`
+**Unix-based Users**:
 
 ```shell
-oshere='docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined  -v "$(pwd)":/root -w /root cs350 /bin/bash'
+./run.sh shell
+```
 
-osup='docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined  -v "$HOME/projects/cs350/":/root -w /root cs350 /bin/bash'
+**Windows Users**:
 
+```shell
+docker exec -it xv6_docker /bin/bash
+```
+
+### Stopping the Container
+
+After you're done working in the environment, you might want to shut down the image. Don't worry if you forget to
+do this, since Docker Desktop will automatically and safely stop running images when you shutdown your computer.
+
+**Unix-based Users**:
+
+```shell
+./run.sh stop
+```
+
+**Windows Users**:
+
+```shell
+docker-compose down
 ```
 
 ## TODO
 
 - [x] actually finish writing Dockerfile
-- [x] write rudimentary build script to create docker image
+- [x] write build/run/stop script
 - [ ] finish writing instructions
-
