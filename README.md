@@ -129,6 +129,36 @@ do this, since Docker Desktop will automatically and safely stop running images 
 docker-compose down
 ```
 
+## Debugging
+
+Here's a quick example of how you can use GDB with the Docker image. I'm using tmux in this video, but you can 
+use any method to have multiple terminals.
+
+[![](http://img.youtube.com/vi/mkTIOiGpykg/0.jpg)](http://www.youtube.com/watch?v=mkTIOiGpykg "gdb with xv6")
+
+Here's the step-by-step:
+
+Terminal A, B should be in the xv6-public-master directory:
+
+*Terminal A:*
+1. run: `make qemu-nox-gdb`
+2. note the port number (here it was 25000)
+
+*Terminal B:*
+
+1. run: `gdb kernel`
+2. (optional) set breakpoints in the source code
+3. run: `c` (continue)
+4. start debugging!
+
+(optional)
+*Terminal A:*
+1. run any user-level program
+
+*Terminal B:*
+1. Ctrl-C
+2. `bt` (backtrace)
+
 ## TODO
 
 - [x] actually finish writing Dockerfile
