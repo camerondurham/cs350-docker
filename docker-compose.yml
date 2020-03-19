@@ -10,10 +10,12 @@ services:
     image: xv6_docker
     security_opt:
       - seccomp:unconfined
+    privileged: true
     container_name: xv6_docker
     ports:
       - "7776:22"
       - "7777:7777"
+      - "25000:25000"
     volumes:
         - ${work}:/xv6_docker/
     working_dir: /xv6_docker/

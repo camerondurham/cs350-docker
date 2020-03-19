@@ -1,5 +1,20 @@
 # CSCI 350 Operating Systems Image
 
+Sections:
+
+- [CSCI 350 Operating Systems Image](#csci-350-operating-systems-image)
+  - [Intro](#intro)
+  - [Image Contents](#image-contents)
+  - [System Requirements](#system-requirements)
+  - [Getting Started](#getting-started)
+    - [Building the Image](#building-the-image)
+    - [Working in the Environment](#working-in-the-environment)
+    - [Stopping](#stopping)
+  - [Remote Debugging](#remote-debugging)
+  - [TODO](#todo)
+
+## Intro
+
 This repo is my attempt at creating a Docker image to do my operating systems development. After building the image, you should be able to use the `run.sh` script to start, stop, and work in a virtualized environment all from your command line!
 
 Inspiration from [Noah Kim's](https://github.com/noahbkim) [cs104/docker](https://github.com/csci104/docker).
@@ -112,7 +127,7 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 docker exec -it xv6_docker /bin/bash
 ```
 
-### Stopping the Container
+### Stopping
 
 After you're done working in the environment, you might want to shut down the image. Don't worry if you forget to
 do this, since Docker Desktop will automatically and safely stop running images when you shutdown your computer.
@@ -128,6 +143,53 @@ do this, since Docker Desktop will automatically and safely stop running images 
 ```shell
 docker-compose down
 ```
+
+## Remote Debugging
+
+You can use the Docker image for building and debugging while working on your favorite IDE on your local machine. This tutorial will go through setting things up with CLion, a Jetbrains IDE that you have a license to use as a student. Download it [here](https://www.jetbrains.com/clion/download/).
+
+I'm grateful to [Jamie Smith](https://github.com/multiplemonomials) for setting up a CMake config for the xv6 assignments. You'll need to download the corresponding xv6-clion files [from Piazza](https://piazza.com/class/k54geyf9w235qb?cid=28) and place them in the `xv6-public-master` directory. Please follow his setup guide to setup CLion.
+
+Next, we will setup a toolchain and remote debugging configuration with the **running** Docker image. Make sure you execute `./run.sh start` for the next steps to work.
+
+1. Create a new `GDB Remote Debug` configuration
+
+Open `Preferences` and search or `Edit Configurations` and select the option.
+
+2. Set configuration settings below
+
+- `GDB`: Bundled GDB multiarch (may need to install `gdb` locally)
+- 'target remote' args: `localhost:25000`
+- Symbol file: `/YOUR-PATH/xv6-public-master/kernel`
+- Sysroot: `/YOUR-PATH/xv6-public-master`
+- Path Mappings (Remote to Local): `/xv6_docker/` to `/YOUR-PATH/xv6-public-master`
+
+Your finished configuration should look something like this:
+
+![debug_config](./screenshots/debug_config.png)
+
+3. Setup your terminal in the IDE (optional)
+
+Unfortunately, I don't yet have a way to seamlessly integrate the debugging environment with CLion. However, this following method is still fairly easy to setup. Open a terminal window in CLion and move to the `cs350-docker` folder. You might want to split the terminal screen on the bottom with the debugger window. You can adjust the window's position with the gear icon on the top right of a window.
+
+![terminal](./screenshots/move_terminal.png)
+
+4. (In Docker) run `make qemu-nox-gdb`
+
+Make sure you're in a Docker shell and run the command to start a `gdb` session.
+
+5. (In Clion) Set a breakpoint in the code (optional)
+
+6. (In CLion) Start a remote debugging session
+
+Make sure the configuration you made in `2` is selected and click the green bug icon:
+
+![debug](screenshots/debug_gdb.png)
+
+It might take a while, but a Debug window will open in CLion and show you some very useful information about variables and registers!
+
+![debugging](screenshots/debugging.png)
+
 
 ## TODO
 

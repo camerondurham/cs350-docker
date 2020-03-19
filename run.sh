@@ -3,6 +3,7 @@
 # Change this folder to your project working directory
 # this file is mounted to your Docker image whenever you
 # spin up the container
+# work=~/projects/cs350/project-3-cdurham_lee344/xv6-public-master/
 work=~/projects/cs350/project-3-cdurham_lee344_cmake/xv6-public-master/
 
 img_name=xv6_docker
@@ -13,13 +14,13 @@ dockerfile="./Dockerfile.remote-env"
 # Check if mounting directory is set
 if [[ -z $work ]]; then
     work=""
-    echo "No work directory set! Make sure to set at the top of the run.sh script, please!"
+    echo "No work directory set!\nMake sure to set at the top of the run.sh script, please!"
     exit 1
 fi
 
 # Check if mount directory can be found
 if [[ ! -d "${work}" ]]; then
-    echo "The work directory cannot be found!"
+    echo "The work directory cannot be found!\nMake sure you set this at the top of the run.sh script, please!"
     exit 1
 else
     export work=$work
