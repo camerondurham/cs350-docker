@@ -3,8 +3,8 @@
 # Change this folder to your project working directory
 # this file is mounted to your Docker image whenever you
 # spin up the container
-# work=~/projects/cs350/project-3-cdurham_lee344/xv6-public-master/
-work=~/projects/cs350/project-3-cdurham_lee344_cmake/xv6-public-master/
+
+# work=/YOUR/PATH/HERE
 
 img_name=xv6_docker
 

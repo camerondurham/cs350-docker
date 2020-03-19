@@ -10,7 +10,8 @@ Sections:
     - [Building the Image](#building-the-image)
     - [Working in the Environment](#working-in-the-environment)
     - [Stopping](#stopping)
-  - [Remote Debugging](#remote-debugging)
+  - [Debugging with CLion](#debugging-with-clion)
+  - [Debugging in Docker](#debugging-in-docker)
   - [TODO](#todo)
 
 ## Intro
@@ -144,7 +145,7 @@ do this, since Docker Desktop will automatically and safely stop running images 
 docker-compose down
 ```
 
-## Remote Debugging
+## Debugging with CLion
 
 You can use the Docker image for building and debugging while working on your favorite IDE on your local machine. This tutorial will go through setting things up with CLion, a Jetbrains IDE that you have a license to use as a student. Download it [here](https://www.jetbrains.com/clion/download/).
 
@@ -166,15 +167,15 @@ Open `Preferences` and search or `Edit Configurations` and select the option.
 
 Your finished configuration should look something like this:
 
-![debug_config](./screenshots/debug_config.png)
+![debug_config](https://i.imgur.com/IzfggMx.png)
 
-3. Setup your terminal in the IDE (optional)
+1. Setup your terminal in the IDE (optional)
 
 Unfortunately, I don't yet have a way to seamlessly integrate the debugging environment with CLion. However, this following method is still fairly easy to setup. Open a terminal window in CLion and move to the `cs350-docker` folder. You might want to split the terminal screen on the bottom with the debugger window. You can adjust the window's position with the gear icon on the top right of a window.
 
-![terminal](./screenshots/move_terminal.png)
+![terminal](https://i.imgur.com/gn0kmsd.png)
 
-4. (In Docker) run `make qemu-nox-gdb`
+1. (In Docker) run `make qemu-nox-gdb`
 
 Make sure you're in a Docker shell and run the command to start a `gdb` session.
 
@@ -184,12 +185,41 @@ Make sure you're in a Docker shell and run the command to start a `gdb` session.
 
 Make sure the configuration you made in `2` is selected and click the green bug icon:
 
-![debug](screenshots/debug_gdb.png)
+![debug](https://i.imgur.com/Yu2CtXq.png)
 
 It might take a while, but a Debug window will open in CLion and show you some very useful information about variables and registers!
 
-![debugging](screenshots/debugging.png)
+![debugging](https://i.imgur.com/cy9L6Qz.png)
 
+## Debugging in Docker
+
+Here's a quick example of how you can use GDB with the Docker image. I'm using tmux in this video, but you can 
+use any method to have multiple terminals.
+
+[![](http://img.youtube.com/vi/mkTIOiGpykg/0.jpg)](http://www.youtube.com/watch?v=mkTIOiGpykg "gdb with xv6")
+
+Here's the step-by-step:
+
+Terminal A, B should be in the xv6-public-master directory:
+
+*Terminal A:*
+1. run: `make qemu-nox-gdb`
+2. note the port number (here it was 25000)
+
+*Terminal B:*
+
+1. run: `gdb kernel`
+2. (optional) set breakpoints in the source code
+3. run: `c` (continue)
+4. start debugging!
+
+(optional)
+*Terminal A:*
+1. run any user-level program
+
+*Terminal B:*
+1. Ctrl-C
+2. `bt` (backtrace)
 
 ## TODO
 
