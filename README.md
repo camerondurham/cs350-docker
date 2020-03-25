@@ -70,7 +70,7 @@ Building the image should require two steps.
 
 
 
-**Unix-based Users**: 
+**Unix-based Users**:
 
 1. Modify the `run.sh` file's `work` variable at the top of the file to be your project folder.
 For example:
@@ -151,7 +151,7 @@ You can use the Docker image for building and debugging while working on your fa
 
 I'm grateful to [Jamie Smith](https://github.com/multiplemonomials) for setting up a CMake config for the xv6 assignments. You'll need to download the corresponding xv6-clion files [from Piazza](https://piazza.com/class/k54geyf9w235qb?cid=28) and place them in the `xv6-public-master` directory. Please follow his setup guide to setup CLion.
 
-Next, we will setup a toolchain and remote debugging configuration with the **running** Docker image. Make sure you execute `./run.sh start` for the next steps to work.
+Next, we will setup a remote debugging configuration with the **running** Docker image. Make sure you execute `./run.sh start` for the next steps to work.
 
 1. Create a new `GDB Remote Debug` configuration
 
@@ -187,13 +187,13 @@ Make sure the configuration you made in `2` is selected and click the green bug 
 
 ![debug](https://i.imgur.com/Yu2CtXq.png)
 
-It might take a while, but a Debug window will open in CLion and show you some very useful information about variables and registers!
+It might take a while for the server to detect the port open from the Docker image, but a Debug window will eventually open in CLion and show you some very useful information about variables and registers!
 
 ![debugging](https://i.imgur.com/cy9L6Qz.png)
 
 ## Debugging in Docker
 
-Here's a quick example of how you can use GDB with the Docker image. I'm using tmux in this video, but you can 
+Here's a quick example of how you can use GDB with the Docker image. I'm using tmux in this video, but you can
 use any method to have multiple terminals.
 
 [![](http://img.youtube.com/vi/mkTIOiGpykg/0.jpg)](http://www.youtube.com/watch?v=mkTIOiGpykg "gdb with xv6")

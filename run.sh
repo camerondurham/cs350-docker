@@ -4,7 +4,8 @@
 # this file is mounted to your Docker image whenever you
 # spin up the container
 
-# work=/YOUR/PATH/HERE
+# CHANGE THIS LINE to your project directory
+work="${CS350_DOCKER_PROJECT}"
 
 img_name=xv6_docker
 
