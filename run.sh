@@ -4,13 +4,16 @@
 # this file is mounted to your Docker image whenever you
 # spin up the container
 
-# CHANGE THIS LINE to your project directory
-work="${CS350_DOCKER_PROJECT}"
+# On Unix: CHANGE THIS LINE to your project directory
+#  example:
+#  work=/Users/tommytrojan/cs350/xv6-public-master
+work=~/projects/cs350/
+
 
 img_name=xv6_docker
 
 docker_compose="./docker-compose.yml"
-dockerfile="./Dockerfile.remote-env"
+dockerfile="./Dockerfile"
 
 # Check if mounting directory is set
 if [[ -z $work ]]; then

@@ -1,4 +1,4 @@
-# From: https://github.com/shuhaoliu/docker-clion-dev/blob/master/docker-compose.yml
+# Inspired by: https://github.com/shuhaoliu/docker-clion-dev/blob/master/docker-compose.yml
 
 version: '3'
 
@@ -6,7 +6,7 @@ services:
   gdbserver:
     build:
       context: ./
-      dockerfile: ./Dockerfile.remote-env
+      dockerfile: ./Dockerfile
     image: xv6_docker
     security_opt:
       - seccomp:unconfined
