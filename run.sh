@@ -9,14 +9,13 @@
 #  work=/Users/tommytrojan/cs350/xv6-public-master
 work=~/projects/cs350/
 
-
-img_name=xv6_docker
+img_name=cs350_docker
 
 docker_compose="./docker-compose.yml"
 dockerfile="./Dockerfile"
 
 # Check if mounting directory is set
-if [[ -z $work ]]; then
+if [[ -z "${work}" ]]; then
     work=""
     echo "No work directory set!\nMake sure to set at the top of the run.sh script, please!"
     exit 1
@@ -31,7 +30,7 @@ else
 fi
 
 # Check for dockerfile
-if [[ ! -f ${docker_compose} ]] || [[ ! -f ${dockerfile} ]]; then
+if [[ ! -f "${docker_compose}" ]] || [[ ! -f "${dockerfile}" ]]; then
     echo "Cannot find Dockerfile. Quitting..."
     exit 1
 fi
@@ -47,7 +46,7 @@ function docker_up() {
         echo "Building Docker image"
     fi
 
-    docker-compose -f ./docker-compose.yml up -d || exit $?
+    docker-compose -f "${docker_compose}" up -d || exit $?
 
     echo "Done!"
 }
@@ -55,7 +54,7 @@ function docker_up() {
 
 function docker_down() {
     # stop running docker image
-    docker-compose -f ./docker-compose.yml down
+    docker-compose -f "${docker_compose}" down
 }
 
 function docker_shell() {
@@ -65,7 +64,7 @@ function docker_shell() {
         echo "No container running. Please run first!"
         exit 1;
     fi
-    docker exec -it ${img_name} /bin/bash
+    docker exec -it "${img_name}" /bin/bash
 }
 
 

@@ -7,11 +7,11 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-    image: xv6_docker
+    image: cs350-docker
     security_opt:
       - seccomp:unconfined
     privileged: true
-    container_name: xv6_docker
+    container_name: cs350_docker
     ports:
       - "7776:22"
       - "7777:7777"
