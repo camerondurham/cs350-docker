@@ -2,7 +2,11 @@
 
 ## Intro
 
-This repo is my attempt at creating a Docker image to do my operating systems development. After building the image, you should be able to use the `run.sh` script to start, stop, and work in a virtualized environment all from your command line!
+This repo contains a simple dev environment to do operating system development
+(at least for xv6). After pulling the Docker image from
+[camerondurham/xv6-docker](https://github.com/camerondurham/xv6-docker), you
+should be able to use the `run.sh` script to start, stop, and work in a
+virtualized environment all from your command line.
 
 Inspiration from [Noah Kim's](https://github.com/noahbkim) [cs104/docker](https://github.com/csci104/docker).
 
@@ -11,6 +15,8 @@ Here's what it looks like to interact with a setup environment:
 [![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
 
 NOTE: The `run.sh` script will only work on Unix systems. However, I've included notes for the exact commands you should run on a Windows system.
+
+To see what's in the Docker image, see: [camerondurham/xv6-docker](https://github.com/camerondurham/xv6-docker)
 
 For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). If you have questions, you can email me at:
 cameronrdurham@gmail.com
@@ -45,16 +51,14 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 
 ## Getting Started
 
-First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
-Once done, **clone this repository**.
 
-### Building the Image
+### Set Up
 
-Building the image should require two steps.
+1. **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop)
 
-1. specify your desired mount location (i.e. your `xv6` project folder)
-2. build the image
+2. **clone this repository**.
 
+3. specify your desired mount location (i.e. your `xv6` project folder)
 
 **Unix-based Users**:
 
@@ -65,8 +69,9 @@ For example:
 work=~/projects/cs350/xv6-public-master/
 ```
 
-2. Run the `run.sh` script will check if you've built an image yet, then either
-build and start or just start the container:
+2. Run the `run.sh` script. If this is your first time starting, this will
+pull the Docker image. This image will be cached until there's a new image
+available or you manually remove it.
 
 ```shell
 ./run.sh start
@@ -92,7 +97,7 @@ to this:
         - C:\Username\xv6-public-master:/xv6_docker/
 ```
 
-2. Run this command to build the environment:
+2. Run this command to start the environment:
 
 ```shell
 docker-compose up -d
