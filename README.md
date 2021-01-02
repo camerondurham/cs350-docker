@@ -22,7 +22,7 @@ For more information, please see the [wiki](https://github.com/camerondurham/cs3
 cameronrdurham@gmail.com
 
 
-## Sections:
+## Sections
 
 - [CSCI 350 Operating Systems Image](#csci-350-operating-systems-image)
   - [System Requirements](#system-requirements)
