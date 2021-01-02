@@ -7,32 +7,25 @@
 # On Unix: CHANGE THIS LINE to your project directory
 #  example:
 #  work=/Users/tommytrojan/cs350/xv6-public-master
-work=~/projects/cs350/
+work=~/projects/xv6-public
 
 img_name=cs350_docker
 
 docker_compose="./docker-compose.yml"
-dockerfile="./Dockerfile"
 
 # Check if mounting directory is set
 if [[ -z "${work}" ]]; then
     work=""
-    echo "No work directory set!\nMake sure to set at the top of the run.sh script, please!"
+    echo -e "No work directory set!\nMake sure to set at the top of the run.sh script, please!"
     exit 1
 fi
 
 # Check if mount directory can be found
 if [[ ! -d "${work}" ]]; then
-    echo "The work directory cannot be found!\nMake sure you set this at the top of the run.sh script, please!"
+    echo -e "The work directory cannot be found!\nMake sure you set this at the top of the run.sh script, please!"
     exit 1
 else
     export work=$work
-fi
-
-# Check for dockerfile
-if [[ ! -f "${docker_compose}" ]] || [[ ! -f "${dockerfile}" ]]; then
-    echo "Cannot find Dockerfile. Quitting..."
-    exit 1
 fi
 
 
