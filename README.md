@@ -1,5 +1,13 @@
 # CSCI 350 Operating Systems Image
 
+<a href="https://hub.docker.com/repository/docker/camerondurham/cs350-docker">
+  <img align="left" src="https://img.shields.io/docker/image-size/camerondurham/cs350-docker?style=flat-square" />
+</a>
+
+<a href="https://hub.docker.com/repository/docker/camerondurham/cs350-docker">
+  <img align="left" src="https://img.shields.io/docker/pulls/camerondurham/cs350-docker" />
+</a>
+
 <a href="https://github.com/marketplace/actions/super-linter">
   <img align="left" src="https://github.com/camerondurham/cs350-docker/workflows/Lint%20Code%20Base/badge.svg" />
 </a>
@@ -9,8 +17,7 @@
 ## Intro
 
 This repo contains a simple dev environment to do operating system development
-(at least for xv6). After pulling the Docker image from
-[camerondurham/xv6-docker](https://github.com/camerondurham/xv6-docker), you
+(at least for xv6). After pulling the Docker image from Docker Hub, you
 should be able to use the `run.sh` script to start, stop, and work in a
 virtualized environment all from your command line.
 
@@ -22,7 +29,7 @@ Here's what it looks like to interact with a setup environment:
 
 NOTE: The `run.sh` script will only work on Unix systems. However, I've included notes for the exact commands you should run on a Windows system.
 
-To see what's in the Docker image, see: [camerondurham/xv6-docker](https://github.com/camerondurham/xv6-docker)
+This repository's Dockerfile is the Docker image pulled from Docker Hub.
 
 For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). If you have questions, you can email me at:
 cameronrdurham@gmail.com
