@@ -27,7 +27,7 @@ Here's what it looks like to interact with a setup environment:
 
 [![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
 
-NOTE: The `run.sh` script will only work on Unix systems. However, I've included notes for the exact commands you should run on a Windows system.
+> Update: a Windows PowerShell script has been added
 
 This repository's Dockerfile is the Docker image pulled from Docker Hub.
 
@@ -38,12 +38,14 @@ cameronrdurham@gmail.com
 ## Sections
 
 - [CSCI 350 Operating Systems Image](#csci-350-operating-systems-image)
+  - [Intro](#intro)
+  - [Sections](#sections)
   - [System Requirements](#system-requirements)
   - [Getting Started](#getting-started)
-    - [Building the Image](#building-the-image)
+    - [Set Up](#set-up)
+    - [Running](#running)
     - [Working in the Environment](#working-in-the-environment)
     - [Stopping](#stopping)
-  - [TODO](#todo)
 
 ## System Requirements
 
@@ -73,48 +75,53 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 
 3. specify your desired mount location (i.e. your `xv6` project folder)
 
-**Unix-based Users**:
 
-1. Modify the `run.sh` file's `work` variable at the top of the file to be your project folder.
+**Windows users only**
+
+Make sure you run this in an Admin PowerShell to let you run scripts:
+
+```powershell
+# must execute this in admin powershell and select [A] to run scripts
+Set-ExecutionPolicy RemoteSigned
+```
+
+### Running
+
+1. Modify the `work` variable at the top of the run script in the project folder.
 For example:
 
-```shell
+**macOS/Linux**
+
+```bash
+# in run.sh
 work=~/projects/cs350/xv6-public-master/
 ```
 
-2. Run the `run.sh` script. If this is your first time starting, this will
+**Windows**
+
+```powershell
+# in run.ps1
+$work="C:\Users\Username\cs350\xv6-public-master"
+```
+
+2. Run the `run.sh`/`run.ps1` script. If this is your first time starting, this will
 pull the Docker image. This image will be cached until there's a new image
 available or you manually remove it.
 
-```shell
+**macOS/Linux**
+
+```bash
 ./run.sh start
+```
+
+**Windows**
+
+```powershell
+.\run.ps1 start
 ```
 
 This script is only a wrapper for some simple Docker commands.
 
-**Windows Users**: I need to still write some support for volume mounting. For now, please follow these steps:
-
-1. In `docker-compose.yml`, change line below the `volumes` rule to mount your desired project folder.
-
-For example, change this:
-
-```yml
-    volumes:
-        - ${work}:/xv6_docker/
-```
-
-to this:
-
-```yml
-    volumes:
-        - C:\Username\xv6-public-master:/xv6_docker/
-```
-
-2. Run this command to start the environment:
-
-```shell
-docker-compose up -d
-```
 
 ### Working in the Environment
 
@@ -128,8 +135,8 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 
 **Windows Users**:
 
-```shell
-docker exec -it xv6_docker /bin/bash
+```powershell
+.\run.ps1 shell
 ```
 
 ### Stopping
@@ -145,13 +152,6 @@ do this, since Docker Desktop will automatically and safely stop running images 
 
 **Windows Users**:
 
-```shell
-docker-compose down
+```powershell
+.\run.ps1 stop
 ```
-
-## TODO
-
-- [x] actually finish writing Dockerfile
-- [x] write build/run/stop script
-- [ ] finish writing instructions
-- [ ] write run script for Windows users

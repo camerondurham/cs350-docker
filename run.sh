@@ -71,7 +71,7 @@ docker_shell
 else
     echo this script manages the linux container
     echo   start - run the docker container
-    echo   shell - start a shell to run docker commands
-    echo   stop - kill the linux container
+    echo   shell - start a shell to run commands in xv6
+    echo   stop  - kill the linux container
     exit 1
 fi
