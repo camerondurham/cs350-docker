@@ -53,8 +53,9 @@ Below are the system requirements for Docker Desktop:
 
 [Windows host](https://docs.docker.com/docker-for-windows/install/):
 
-- Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later).
-- Hyper-V and Containers Windows features must be enabled.
+- Windows 10 64-bit: (Build 15063 or later)
+  - Pro, Enterprise, or Education: using Hyper-V and Containers Windows features
+  - Any Windows 10 version: using WSL2 container backend **(recommended)**
 
 If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/).
 
