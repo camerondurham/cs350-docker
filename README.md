@@ -46,6 +46,7 @@ cameronrdurham@gmail.com
     - [Running](#running)
     - [Working in the Environment](#working-in-the-environment)
     - [Stopping](#stopping)
+  - [Troubleshooting](#troubleshooting)
 
 ## System Requirements
 
@@ -156,3 +157,26 @@ do this, since Docker Desktop will automatically and safely stop running images 
 ```powershell
 .\run.ps1 stop
 ```
+
+## Troubleshooting
+
+
+### xv6 will not start shell, hangs at qemu command
+
+If you're having issues starting `xv6`, such as the system is hanging at `qemu` commands, try the following
+
+1. outside the Docker shell, pull updated repo directoy from xv6-public: `git clone git@github.com:mit-pdos/xv6-public.git`
+2. ensure all `.pl` files are executable and re-build:
+
+```bash
+# run these commands in the docker shell
+chmod +x *.pl
+make clean
+make qemu-nox
+```
+
+### make qemu fails
+
+Since this Docker image does not run a virtual display or window server, you cannot run `make qemu`. Instead, use
+`make qemu-nox`. Adding an X server would have minimal benefit, since you can simply use your current terminal
+window to debug your xv6 programs.
