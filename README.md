@@ -23,10 +23,6 @@ virtualized environment all from your command line.
 
 The interface is based off of [Noah Kim's](https://github.com/noahbkim) [cs104/docker](https://github.com/csci104/docker).
 
-Here's what it looks like to interact with a setup environment:
-
-[![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
-
 This repository's Dockerfile is the Docker image pulled from Docker Hub.
 
 For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems, please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose).
@@ -42,6 +38,7 @@ For more information, please see the [wiki](https://github.com/camerondurham/cs3
     - [Running](#running)
     - [Working in the Environment](#working-in-the-environment)
     - [Stopping](#stopping)
+  - [Demo](#demo)
   - [System Requirements](#system-requirements)
   - [Troubleshooting](#troubleshooting)
 
@@ -137,6 +134,14 @@ do this, since Docker Desktop will automatically and safely stop running images 
 ```powershell
 .\run.ps1 stop
 ```
+
+
+## Demo
+
+Here's what it looks like to interact with a setup environment:
+
+[![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
+
 
 ## System Requirements
 
