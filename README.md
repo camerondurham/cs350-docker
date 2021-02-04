@@ -43,10 +43,11 @@ For more information, please see the [wiki](https://github.com/camerondurham/cs3
   - [System Requirements](#system-requirements)
   - [Troubleshooting](#troubleshooting)
 
-## Quick Start (no cloning required)
+## Quick Start
 
 You can download the CLI utility to run this and other docker environments. Shameless plug, I wrote that CLI too.
 Benefits of installing this way is that you don't have to be in a specific directory to start the csci350 environment.
+Also, you won't have to clone this repo to get started.
 
 See [instructions here](https://github.com/camerondurham/ch#quick-start) on the commands to run to install the CLI.
 
