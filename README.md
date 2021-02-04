@@ -51,12 +51,15 @@ Also, you won't have to clone this repo to get started.
 
 See [instructions here](https://github.com/camerondurham/ch#quick-start) on the commands to run to install the CLI.
 
-Once you have `ch` installed, run the command to [create the csci350 environment](https://github.com/camerondurham/ch#create-the-csci-350-environment). This will download the Docker image that will work for xv6 and set the required environment to run qemu, gdb, and even do remote debugging. Before you run the command, make sure you've provided the correct path with the `--volume` flag (see instructions in the README for details).
+Once you have `ch` installed, run the command to [create the csci350 environment](https://github.com/camerondurham/ch#create-the-csci-350-environment).
+This will download the Docker image that will work for xv6 and set the required environment to run qemu, gdb, 
+and even do remote debugging. Before you run the command, make sure you've provided the correct path with the 
+`--volume` flag (see instructions in the README for details).
 
 
 ## Getting Started
 
-The instructions below will walk you through running the setup script and the run script you'll use to access the csci350 environment. 
+The instructions below will walk you through running the setup script and the run script you'll use to access the csci350 environment.
 
 ### Set Up
 
