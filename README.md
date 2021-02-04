@@ -42,9 +42,19 @@ For more information, please see the [wiki](https://github.com/camerondurham/cs3
   - [System Requirements](#system-requirements)
   - [Troubleshooting](#troubleshooting)
 
+## Quick Start (no cloning required)
+
+You can download the CLI utility to run this and other docker environments. Shameless plug, I wrote that CLI too.
+Benefits of installing this way is that you don't have to be in a specific directory to start the csci350 environment.
+
+See [instructions here](https://github.com/camerondurham/ch#quick-start) on the commands to run to install the CLI.
+
+Once you have `ch` installed, run the command to [create the csci350 environment](https://github.com/camerondurham/ch#create-the-csci-350-environment). This will download the Docker image that will work for xv6 and set the required environment to run qemu, gdb, and even do remote debugging. Before you run the command, make sure you've provided the correct path with the `--volume` flag (see instructions in the README for details).
+
 
 ## Getting Started
 
+The instructions below will walk you through running the setup script and the run script you'll use to access the csci350 environment. 
 
 ### Set Up
 
