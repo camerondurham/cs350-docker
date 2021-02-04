@@ -33,6 +33,7 @@ For more information, please see the [wiki](https://github.com/camerondurham/cs3
 - [CSCI 350 Operating Systems Image](#csci-350-operating-systems-image)
   - [Intro](#intro)
   - [Sections](#sections)
+  - [Quick Start](#quick-start)
   - [Getting Started](#getting-started)
     - [Set Up](#set-up)
     - [Running](#running)
