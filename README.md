@@ -23,10 +23,15 @@ virtualized environment all from your command line.
 
 The interface is based off of [Noah Kim's](https://github.com/noahbkim) [cs104/docker](https://github.com/csci104/docker).
 
-This repository's Dockerfile is the Docker image pulled from Docker Hub.
-
 For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems, please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose).
 
+### Supported Platforms
+
+This Docker image has been tested and verified to be functioning correctly on the following platforms:
+
+- Catalina, Big Sur (Intel)
+- Big Sur (Apple Silicon)
+- Windows 10 (Docker with WSL2 backend)
 
 ## Sections
 
