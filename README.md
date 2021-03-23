@@ -18,12 +18,13 @@
 
 This repo contains a simple dev environment to do operating system development
 (at least for xv6). After pulling the Docker image from Docker Hub, you
-should be able to use the `run.sh` script to start, stop, and work in a
+should be able to use the `run.sh` or `run.ps1` script to start, stop, and work in a
 virtualized environment all from your command line.
 
-The interface is based off of [Noah Kim's](https://github.com/noahbkim) [cs104/docker](https://github.com/csci104/docker).
+The interface is based off of [Noah Kim's](https://github.com/noahbkim) and my [cs104/docker](https://github.com/csci104/docker).
 
-For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems, please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose).
+For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems, 
+please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose) or dm me on Discord: `cam (he/they)#1016`.
 
 ### Supported Platforms
 
@@ -32,6 +33,12 @@ This Docker image has been tested and verified to be functioning correctly on th
 - Catalina, Big Sur (Intel)
 - Big Sur (Apple Silicon)
 - Windows 10 (Docker with WSL2 backend)
+
+### Recommended Editors
+
+- Visual Studio Code with the [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension
+- JetBrains CLion with the [Makefile](https://plugins.jetbrains.com/plugin/9333-makefile-language) extension or CMake integration
+- NeoVim with [coc.nvim](https://github.com/neoclide/coc.nvim) and patience
 
 ## Sections
 
