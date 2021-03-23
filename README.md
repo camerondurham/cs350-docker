@@ -23,7 +23,7 @@ virtualized environment all from your command line.
 
 The interface is based off of [Noah Kim's](https://github.com/noahbkim) and my [cs104/docker](https://github.com/csci104/docker).
 
-For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems, 
+For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems,
 please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose) or dm me on Discord: `cam (he/they)#1016`.
 
 ### Supported Platforms
@@ -38,7 +38,7 @@ This Docker image has been tested and verified to be functioning correctly on th
 
 - Visual Studio Code with the [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension
 - JetBrains CLion with the [Makefile](https://plugins.jetbrains.com/plugin/9333-makefile-language) extension or CMake integration
-- NeoVim with [coc.nvim](https://github.com/neoclide/coc.nvim) and patience
+- NeoVim with [coc.nvim](https://github.com/neoclide/coc.nvim) and extra patience
 
 ## Sections
 
