@@ -40,21 +40,6 @@ This Docker image has been tested and verified to be functioning correctly on th
 - JetBrains CLion with the [Makefile](https://plugins.jetbrains.com/plugin/9333-makefile-language) extension or CMake integration
 - NeoVim with [coc.nvim](https://github.com/neoclide/coc.nvim) and extra patience
 
-## Sections
-
-- [CSCI 350 Operating Systems Image](#csci-350-operating-systems-image)
-  - [Intro](#intro)
-  - [Sections](#sections)
-  - [Quick Start](#quick-start)
-  - [Getting Started](#getting-started)
-    - [Set Up](#set-up)
-    - [Running](#running)
-    - [Working in the Environment](#working-in-the-environment)
-    - [Stopping](#stopping)
-  - [Demo](#demo)
-  - [System Requirements](#system-requirements)
-  - [Troubleshooting](#troubleshooting)
-
 ## Quick Start
 
 You can download the CLI utility to run this and other docker environments. Shameless plug, I wrote that CLI too.
