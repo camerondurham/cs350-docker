@@ -133,6 +133,17 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 .\run.ps1 shell
 ```
 
+### Exiting the Environment
+
+To quit qemu and return to Linux shell:
+
+```
+ctrl + a
+x
+```
+
+Don't hit all three keys at the same time. Do `ctrl + a` then `x`
+
 ### Stopping
 
 After you're done working in the environment, you might want to shut down the image. Don't worry if you forget to
@@ -246,4 +257,4 @@ wsl --setdefault <process name>
 
 After it finishes changing, open your Docker Desktop and navigate `Settings > Resources > WSL Integration`, make sure you check "Enable integration with my default WSL distro", and enable integrations with any of the additional distros you have. You'll have to restart your docker by doing this operation.
 
-[Docker Desktop WSL image](assets/docker-wsl.png)
+![Docker Desktop WSL image](assets/docker-wsl.png)
