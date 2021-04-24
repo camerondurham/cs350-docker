@@ -123,7 +123,7 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 
 **macOS/Linux/Windows Terminal (WSL2)**:
 
-```shell
+```bash
 ./run.sh shell
 ```
 
@@ -137,7 +137,7 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 
 To quit qemu and return to Linux shell:
 
-```
+```bash
 ctrl + a
 x
 ```
@@ -227,13 +227,13 @@ If you don't have WSL, you can follow the steps [here](https://docs.microsoft.co
 
 Now that you have WSL and a linux distro installed, you can check if you have WSL2 enabled by runnning PowerShell in administration and run this command
 
-```
+```powershell
 wsl --list --verbose
 ```
 
 You'll then see the name of your WSL, State, and Version (what you see may vary based on the distro you installed, this write up is using [Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab))
 
-```
+```powershell
 PS C:\WINDOWS\system32> wsl --list --verbose
   NAME                   STATE           VERSION
 * Ubuntu                 Running         2
@@ -245,13 +245,13 @@ Here, you see a list of WSL running processes along with its state and WSL versi
 
 If it shows `1` under version for any of the names, you can change it to `2` by entering this command in PowerShell in administration
 
-```
+```powershell
 wsl --set-version <process name> 2
 ```
 
 You can change the default distro by running
 
-```
+```powershell
 wsl --setdefault <process name>
 ```
 
