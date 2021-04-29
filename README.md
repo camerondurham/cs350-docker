@@ -24,7 +24,7 @@ virtualized environment all from your command line.
 The interface is based off of [Noah Kim's](https://github.com/noahbkim) and my [cs104/docker](https://github.com/csci104/docker).
 
 For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems,
-please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose) or dm me on Discord: `cam (he/they)#1016`.
+please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose) or dm me [on Discord](https://discord.com/users/632337069955612703).
 
 ### Supported Platforms
 
