@@ -14,6 +14,27 @@
 
 <br>
 
+- [CSCI 350 Operating Systems Image](#csci-350-operating-systems-image)
+  - [Intro](#intro)
+    - [Supported Platforms](#supported-platforms)
+    - [Recommended Editors](#recommended-editors)
+  - [Quick Start](#quick-start)
+  - [Getting Started](#getting-started)
+    - [Set Up](#set-up)
+    - [Running](#running)
+    - [Working in the Environment](#working-in-the-environment)
+    - [Exiting the Environment](#exiting-the-environment)
+    - [Stopping](#stopping)
+  - [Demo](#demo)
+  - [Container Helper](#container-helper)
+  - [System Requirements](#system-requirements)
+  - [Troubleshooting](#troubleshooting)
+    - [xv6 will not start shell, hangs at qemu command](#xv6-will-not-start-shell-hangs-at-qemu-command)
+    - [make qemu fails](#make-qemu-fails)
+    - [Makefile:104: recipe for target 'bootblock' failed](#makefile104-recipe-for-target-bootblock-failed)
+    - [xv6 stuck on qemu-system-i386 Windows](#xv6-stuck-on-qemu-system-i386-windows)
+      - [Docker Desktop Setting Screenshots](#docker-desktop-setting-screenshots)
+
 ## Intro
 
 This repo contains a simple dev environment to do operating system development
@@ -59,11 +80,13 @@ The instructions below will walk you through running the setup script and the ru
 
 ### Set Up
 
-1. **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop)
+1. **Install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop)
 
-2. **clone this repository**.
+   - **Windows Users Only**: Docker provides better performance using **WSL 2** than legacy Hyper-V. Set up WSL 2 using Microsoft's guide [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps). After you have WSL 2 running, refer to the screenshots at the end of this readme for settings you have to enable in Docker Desktop app.
 
-3. specify your desired mount location (i.e. your `xv6` project folder)
+2. **Clone this repository**.
+
+3. Specify your desired mount location (i.e. your `xv6` project folder)
 
 **Windows users only**
 
@@ -79,41 +102,41 @@ Set-ExecutionPolicy RemoteSigned
 1. Modify the `work` variable at the top of the run script in the project folder.
    For example:
 
-**macOS/Linux**:
+   **macOS/Linux**:
 
-```bash
-# in run.sh
-work=~/projects/cs350/xv6-public-master/
-```
+   ```bash
+   # in run.sh
+   work=~/projects/cs350/xv6-public-master/
+   ```
 
-**Windows Powershell**:
+   **Windows Powershell**:
 
-```powershell
-# in run.ps1
-$work="C:\Users\Username\cs350\xv6-public-master"
-```
+   ```powershell
+   # in run.ps1
+   $work="C:\Users\Username\cs350\xv6-public-master"
+   ```
 
-**Windows Terminal using WSL2**:
+   **Windows Terminal using WSL2**:
 
-```bash
-work=/mnt/c/Users/Username/cs350/xv6-public-master
-```
+   ```bash
+   work=/mnt/c/Users/Username/cs350/xv6-public-master
+   ```
 
 2. Run the `run.sh`/`run.ps1` script. If this is your first time starting, this will
    pull the Docker image. This image will be cached until there's a new image
    available or you manually remove it.
 
-**macOS/Linux/Windows Terminal (WSL2)**:
+   **macOS/Linux/Windows Terminal (WSL2)**:
 
-```bash
-./run.sh start
-```
+   ```bash
+   ./run.sh start
+   ```
 
-**Windows Powershell**:
+   **Windows Powershell**:
 
-```powershell
-.\run.ps1 start
-```
+   ```powershell
+   .\run.ps1 start
+   ```
 
 This script is only a wrapper for some simple Docker commands.
 
@@ -167,6 +190,10 @@ Here's what it looks like to interact with a setup environment:
 
 [![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
 
+## Container Helper
+
+If you don't want to navigate to your docker directory every time, you can check out [Container Helper](https://github.com/camerondurham/ch) to start your docker shell anywhere.
+
 ## System Requirements
 
 Below are the system requirements for Docker Desktop:
@@ -191,8 +218,8 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 
 If you're having issues starting `xv6`, such as the system is hanging at `qemu` commands, try the following
 
-1. outside the Docker shell, pull updated repo directoy from xv6-public: `git clone git@github.com:mit-pdos/xv6-public.git`
-2. ensure all `.pl` files are executable and re-build:
+1. Outside the Docker shell, pull updated repo directory from xv6-public: `git clone git@github.com:mit-pdos/xv6-public.git`
+2. Ensure all `.pl` files are executable and re-build:
 
 ```bash
 # run these commands in the docker shell
@@ -255,6 +282,9 @@ You can change the default distro by running
 wsl --setdefault <process name>
 ```
 
-After it finishes changing, open your Docker Desktop and navigate `Settings > Resources > WSL Integration`, make sure you check "Enable integration with my default WSL distro", and enable integrations with any of the additional distros you have. You'll have to restart your docker by doing this operation.
+After it finishes changing, open your Docker Desktop and enable `Use the WSL 2 based engine`. Then navigate to `Settings > Resources > WSL Integration`, make sure you check `Enable integration with my default WSL distro`, and enable integrations with any of the additional distros you have. You'll have to restart your docker by doing this operation.
 
-![Docker Desktop WSL image](assets/docker-wsl.png)
+#### Docker Desktop Setting Screenshots
+
+![Docker Desktop General Settings](assets/docker-home.png)
+![Docker Desktop Resources Settings](assets/docker-wsl.png)
