@@ -26,6 +26,7 @@
     - [Exiting the Environment](#exiting-the-environment)
     - [Stopping](#stopping)
   - [Demo](#demo)
+  - [Container Helper](#container-helper)
   - [System Requirements](#system-requirements)
   - [Troubleshooting](#troubleshooting)
     - [xv6 will not start shell, hangs at qemu command](#xv6-will-not-start-shell-hangs-at-qemu-command)
@@ -188,6 +189,10 @@ do this, since Docker Desktop will automatically and safely stop running images 
 Here's what it looks like to interact with a setup environment:
 
 [![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
+
+## Container Helper
+
+If you don't want to navigate to your docker directory every time, you can check out [Container Helper](https://github.com/camerondurham/ch) to start your docker shell anywhere.
 
 ## System Requirements
 
