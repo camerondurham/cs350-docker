@@ -32,6 +32,7 @@
     - [make qemu fails](#make-qemu-fails)
     - [Makefile:104: recipe for target 'bootblock' failed](#makefile104-recipe-for-target-bootblock-failed)
     - [xv6 stuck on qemu-system-i386 Windows](#xv6-stuck-on-qemu-system-i386-windows)
+      - [Docker Desktop Setting Screenshots](#docker-desktop-setting-screenshots)
 
 ## Intro
 
@@ -276,7 +277,9 @@ You can change the default distro by running
 wsl --setdefault <process name>
 ```
 
-After it finishes changing, open your Docker Desktop and navigate `Settings > Resources > WSL Integration`, make sure you check "Enable integration with my default WSL distro", and enable integrations with any of the additional distros you have. You'll have to restart your docker by doing this operation.
+After it finishes changing, open your Docker Desktop and enable `Use the WSL 2 based engine`. Then navigate to `Settings > Resources > WSL Integration`, make sure you check `Enable integration with my default WSL distro`, and enable integrations with any of the additional distros you have. You'll have to restart your docker by doing this operation.
 
-![Docker Desktop WSL image](assets/docker-home.png)
-![Docker Desktop WSL image](assets/docker-wsl.png)
+#### Docker Desktop Setting Screenshots
+
+![Docker Desktop General Settings](assets/docker-home.png)
+![Docker Desktop Resources Settings](assets/docker-wsl.png)
