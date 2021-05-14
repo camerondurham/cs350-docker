@@ -1,5 +1,5 @@
 # change this variable to the path to your project directory
-$work="C:\Users\Cameron\Projects\project-1-cdurham_lee344"
+$work="C:\Users\Username\csci350"
 $docker_compose=".\docker-compose.yml"
 $img_name="cs350_docker"
 

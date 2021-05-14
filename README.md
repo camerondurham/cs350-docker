@@ -192,7 +192,11 @@ Here's what it looks like to interact with a setup environment:
 
 ## Container Helper
 
-If you don't want to navigate to your docker directory every time, you can check out [Container Helper](https://github.com/camerondurham/ch) to start your docker shell anywhere.
+If you don't want to navigate to your docker directory every time, you can check
+out [Container Helper](https://github.com/camerondurham/ch#quick-start) for a
+simple command-line interface. The README includes a one-liner to create the
+same cs350 environment included in the repository
+[here](https://github.com/camerondurham/ch#create-the-csci-350-environment).
 
 ## System Requirements
 
@@ -286,5 +290,7 @@ After it finishes changing, open your Docker Desktop and enable `Use the WSL 2 b
 
 #### Docker Desktop Setting Screenshots
 
-![Docker Desktop General Settings](assets/docker-home.png)
-![Docker Desktop Resources Settings](assets/docker-wsl.png)
+<div align="center">
+  <img alt="Docker Desktop General Settings" src="assets/docker-home.png" width="500px"/>
+  <img alt="Docker Desktop Resource Settings" src="assets/docker-wsl.png" width="500px"/>
+</div>

@@ -2,7 +2,7 @@ version: '3'
 
 services:
   gdbserver:
-    image: camerondurham/cs350-docker:latest
+    image: camerondurham/cs350-docker:v1
     security_opt:
       - seccomp:unconfined
     privileged: true

@@ -32,7 +32,7 @@ jobs:
           push: true
           cache-from: type=registry,ref=camerondurham/cs350-docker:latest
           cache-to: type=inline
-          tags: camerondurham/cs350-docker:latest
+          tags: camerondurham/cs350-docker:v1
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
