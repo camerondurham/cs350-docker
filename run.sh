@@ -60,6 +60,17 @@ function docker_shell() {
     docker exec -it "${img_name}" /bin/bash
 }
 
+function docker_build() {
+    # check if a container is running
+    container=$(docker ps | grep -c "${img_name}")
+    if [[ $container == 0 ]]; then
+        echo "No container running. Please run first!"
+        exit 1;
+    fi
+    
+    # We'll assume that xv6_docker contains the project directory
+    docker exec -it -w /xv6_docker "${img_name}" /usr/bin/make fs.img xv6.img
+}
 
 if [[ $1 = "start" ]]; then
 docker_up
@@ -68,10 +79,13 @@ elif [[ $1 = "stop" ]]; then
 docker_down
 elif [[ $1 = "shell" ]]; then
 docker_shell
+elif [[ $1 = "build" ]]; then
+docker_build
 else
     echo this script manages the linux container
     echo   start - run the docker container
     echo   shell - start a shell to run commands in xv6
+    echo   build - runs \`make fs.img xv6.img\`
     echo   stop  - kill the linux container
     exit 1
 fi

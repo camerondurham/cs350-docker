@@ -54,6 +54,7 @@ This Docker image has been tested and verified to be functioning correctly on th
 - Catalina, Big Sur (Intel)
 - Big Sur (Apple Silicon)
 - Windows 10 (Docker with WSL2 backend)
+- Debian Sid, Arch Linux
 
 ### Recommended Editors
 
@@ -83,6 +84,7 @@ The instructions below will walk you through running the setup script and the ru
 1. **Install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop)
 
    - **Windows Users Only**: Docker provides better performance using **WSL 2** than legacy Hyper-V. Set up WSL 2 using Microsoft's guide [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10#manual-installation-steps). After you have WSL 2 running, refer to the screenshots at the end of this readme for settings you have to enable in Docker Desktop app.
+   - **Linux Users Only**: Install Docker engine from [here](https://docs.docker.com/engine/install/centos/),
 
 2. **Clone this repository**.
 
@@ -156,6 +158,21 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 .\run.ps1 shell
 ```
 
+If you're only using this as a build toolchain, you can run the following command to create `xv6.img` and `fs.img`
+for use in QEMU later. This assumes that the Makefile exists in the project directory.
+
+**macOS/Linux/Windows Terminal (WSL2)**:
+
+```bash
+./run.sh build
+```
+
+**Windows Powershell**:
+
+```powershell
+.\run.ps1 build
+```
+
 ### Exiting the Environment
 
 To quit qemu and return to Linux shell:
@@ -167,10 +184,14 @@ x
 
 Don't hit all three keys at the same time. Do `ctrl + a` then `x`
 
+You may get better performance by only using the build toolchain in the container, and running QEMU natively after
+installing it through Homebrew or your package manager of choice. This is because newer versions of GCC no longer
+compile the bootloader correctly. You can also get QEMU to run graphically this way!
+
 ### Stopping
 
-After you're done working in the environment, you might want to shut down the image. Don't worry if you forget to
-do this, since Docker Desktop will automatically and safely stop running images when you shutdown your computer.
+After you're done working in the environment, you might want to stop the container. Don't worry if you forget to
+do this, since Docker Desktop will automatically and safely stop running containers when you shutdown your computer.
 
 **macOS/Linux/Windows Terminal (WSL2)**:
 
@@ -215,6 +236,10 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 - Mac hardware must be a 2010 or newer model
 - macOS must be version 10.13 or newer
 - 4 GB RAM minimum
+
+[Linux host](https://docs.docker.com/engine/install/):
+
+- Use the Docker-provided install instructions if it exists for your distro, otherwise 
 
 ## Troubleshooting
 
