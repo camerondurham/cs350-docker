@@ -156,6 +156,21 @@ To start up a Linux shell inside the Docker image, you'll want to start a termin
 .\run.ps1 shell
 ```
 
+If you're only using this as a build toolchain, you can run the following command to create `xv6.img` and `fs.img`
+for use in QEMU later. This assumes that the Makefile exists in the project directory.
+
+**macOS/Linux/Windows Terminal (WSL2)**:
+
+```bash
+./run.sh build
+```
+
+**Windows Powershell**:
+
+```powershell
+.\run.ps1 build
+```
+
 ### Exiting the Environment
 
 To quit qemu and return to Linux shell:

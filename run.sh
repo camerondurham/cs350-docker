@@ -68,8 +68,8 @@ function docker_build() {
         exit 1;
     fi
     
-    # We'll assume that xv6-public-master exists in the project directory
-    docker exec -it "${img_name}" -w /xv6_docker/xv6-public-master /bin/make fs.img xv6.img
+    # We'll assume that xv6_docker contains the project directory
+    docker exec -it -w /xv6_docker "${img_name}" /usr/bin/make fs.img xv6.img
 }
 
 if [[ $1 = "start" ]]; then
@@ -85,6 +85,7 @@ else
     echo this script manages the linux container
     echo   start - run the docker container
     echo   shell - start a shell to run commands in xv6
+    echo   build - runs \`make fs.img xv6.img\`
     echo   stop  - kill the linux container
     exit 1
 fi
