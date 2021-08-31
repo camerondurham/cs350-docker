@@ -8,9 +8,6 @@
   <img align="left" src="https://img.shields.io/docker/pulls/camerondurham/cs350-docker" />
 </a>
 
-<a href="https://github.com/marketplace/actions/super-linter">
-  <img align="left" src="https://github.com/camerondurham/cs350-docker/workflows/Lint%20Code%20Base/badge.svg" />
-</a>
 
 <br>
 
