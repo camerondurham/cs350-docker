@@ -6,17 +6,17 @@ FROM ubuntu:18.04
 # Based on: https://github.com/shuhaoliu/docker-clion-dev
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    apt-utils=1.6.13 \
+    apt-utils=1.6.14 \
     build-essential=12.4ubuntu1 \
-    cmake=3.10.2-1ubuntu2.18.04.1 \
+    cmake=3.10.2-1ubuntu2.18.04.2 \
     g++=4:7.4.0-1ubuntu2.3 \
     gcc=4:7.4.0-1ubuntu2.3 \
     gcc-multilib=4:7.4.0-1ubuntu2.3 \
     gdb=8.1.1-0ubuntu1 \
     gdbserver=8.1.1-0ubuntu1 \
-    openssh-server=1:7.6p1-4ubuntu0.3 \
-    qemu=1:2.11+dfsg-1ubuntu7.36 \
-    qemu-system-common=1:2.11+dfsg-1ubuntu7.36 \
+    openssh-server=1:7.6p1-4ubuntu0.5 \
+    qemu=1:2.11+dfsg-1ubuntu7.37 \
+    qemu-system-common=1:2.11+dfsg-1ubuntu7.37 \
     rsync=3.1.2-2.1ubuntu1.1 \
     && apt-get autoclean -y \
     && apt-get autoremove -y \
