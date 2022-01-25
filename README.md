@@ -281,7 +281,7 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 
 [Linux host](https://docs.docker.com/engine/install/):
 
-- Use the Docker-provided install instructions if it exists for your distro, otherwise
+- Use the Docker-provided install instructions if it exists for your distro
 
 ## Troubleshooting
 
