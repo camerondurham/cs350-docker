@@ -15,15 +15,17 @@
   - [Intro](#intro)
     - [Supported Platforms](#supported-platforms)
     - [Recommended Editors](#recommended-editors)
-  - [Quick Start](#quick-start)
-  - [Getting Started](#getting-started)
-    - [Set Up](#set-up)
-    - [Running](#running)
-    - [Working in the Environment](#working-in-the-environment)
-    - [Exiting the Environment](#exiting-the-environment)
-    - [Stopping](#stopping)
+  - [Getting Started (using `ch`)](#getting-started-using-ch)
+    - [1. Find the Filepath to Your Work Directory](#1-find-the-filepath-to-your-work-directory)
+    - [2. Create the ch Environment](#2-create-the-ch-environment)
+    - [3. Start the Environment](#3-start-the-environment)
+  - [Getting Started (run scripts)](#getting-started-run-scripts)
+    - [1. Set Up](#1-set-up)
+    - [2. Running](#2-running)
+    - [3. Working in the Environment](#3-working-in-the-environment)
+    - [4. Exiting the Environment](#4-exiting-the-environment)
+    - [5. Stopping](#5-stopping)
   - [Demo](#demo)
-  - [Container Helper](#container-helper)
   - [System Requirements](#system-requirements)
   - [Troubleshooting](#troubleshooting)
     - [xv6 will not start shell, hangs at qemu command](#xv6-will-not-start-shell-hangs-at-qemu-command)
@@ -39,17 +41,19 @@ This repo contains a simple dev environment to do operating system development
 should be able to use the `run.sh` or `run.ps1` script to start, stop, and work in a
 virtualized environment all from your command line.
 
-The interface is based off of [Noah Kim's](https://github.com/noahbkim) and my [cs104/docker](https://github.com/csci104/docker).
+The interface is based off of [Noah Kim's](https://github.com/noahbkim) and my [csci104/docker](https://github.com/csci104/docker).
 
-For more information, please see the [wiki](https://github.com/camerondurham/cs350-docker/wiki). For any bugs or problems,
-please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose) or dm me [on Discord](https://discord.com/users/632337069955612703).
+For more information, please see the
+[wiki](https://github.com/camerondurham/cs350-docker/wiki). For any questions,
+bugs or problems with these instructions, please [create an issue](https://github.com/camerondurham/cs350-docker/issues/new/choose)
+or send a DM [on Discord](https://discord.com/users/632337069955612703).
 
 ### Supported Platforms
 
 This Docker image has been tested and verified to be functioning correctly on the following platforms:
 
 - Catalina, Big Sur (Intel)
-- Big Sur (Apple Silicon)
+- Big Sur, Monterey (Apple Silicon)
 - Windows 10 (Docker with WSL2 backend)
 - Debian Sid, Arch Linux
 
@@ -59,24 +63,73 @@ This Docker image has been tested and verified to be functioning correctly on th
 - JetBrains CLion with the [Makefile](https://plugins.jetbrains.com/plugin/9333-makefile-language) extension or CMake integration
 - NeoVim with [coc.nvim](https://github.com/neoclide/coc.nvim) and extra patience
 
-## Quick Start
+## Getting Started (using `ch`)
 
-You can download the CLI utility to run this and other docker environments. Shameless plug, I wrote that CLI too.
+Skip to the **Getting Started (run scripts)** section if you do not want to install `ch`.
+
+If you have the container helper CLI (`ch`) installed already, this is the
+fastest way to start. See [instructions here](https://github.com/camerondurham/ch#quick-start) to install `ch`. (full disclosure, this is a shameless plug since I wrote the CLI but I do at least dogfood my own tools!).
+
 Benefits of installing this way is that you don't have to be in a specific directory to start the csci350 environment.
-Also, you won't have to clone this repo to get started.
+Also, you won't have to clone this repo to get started since your main dependency is the Docker image with `qemu` and `gdb` installed.
 
-See [instructions here](https://github.com/camerondurham/ch#quick-start) on the commands to run to install the CLI.
+### 1. Find the Filepath to Your Work Directory
 
-Once you have `ch` installed, run the command to [create the csci350 environment](https://github.com/camerondurham/ch#create-the-csci-350-environment).
-This will download the Docker image that will work for xv6 and set the required environment to run qemu, gdb,
-and even do remote debugging. Before you run the command, make sure you've provided the correct path with the
-`--volume` flag (see instructions in the README for details).
+Find the absolute path to your `csci350` directory where you keep your homework.
 
-## Getting Started
+See the [Filepaths in terminal](https://github.com/csci104/docker#filepaths-in-the-terminal) wiki from csci104/docker if you need some help with this.
+
+
+**On macOS/Linux**:
+
+Navigate to your directory in the terminal and run `pwd`, the output should be something like `/Users/username/path/to/csci350`
+
+**In Windows Powershell**
+
+Navigate to the directory in Powershell and run `Get-Location`, you will want the output like `C:\Users\Username\path\to\csci350`
+
+### 2. Create the ch Environment
+
+Use `ch create` to create and save the environment settings, replacing `PATH_TO_YOUR_WORKDIR` with the path from step 1.
+
+You can copy-paste this below in macOS/Linux:
+```bash
+ch create csci350 \
+    --image camerondurham/cs350-docker:v1 \
+    --volume PATH_TO_YOUR_WORKDIR:/xv6_docker \
+    --security-opt seccomp:unconfined \
+    --port 7776:22 \
+    --port 7777:7777 \
+    --port 25000:25000 \
+    --cap-add SYS_PTRACE \
+    --shell /bin/bash \
+    --privileged
+```
+
+Below is the single-line version for Windows. Please remember to replace `PATH_TO_YOUR_WORKDIR` wirh the path from part 1.
+
+```
+ch create csci350 --image camerondurham/cs350-docker:v1 --volume PATH_TO_YOUR_WORKDIR:/xv6_docker --security-opt seccomp:unconfined --port 7776:22 --port 7777:7777 --port 25000:25000 --cap-add SYS_PTRACE --shell /bin/bash --privileged
+```
+
+
+### 3. Start the Environment
+
+
+```bash
+ch shell csci350 --force-start
+```
+
+See the `ch` README [Command section](https://github.com/camerondurham/ch) or `ch --help` for other commands.
+
+## Getting Started (run scripts)
+
+Skip this section if you followed **Getting Started (ch)** instructions since
+`ch` will take care of starting/stopping/getting shells into your environment.
 
 The instructions below will walk you through running the setup script and the run script you'll use to access the csci350 environment.
 
-### Set Up
+### 1. Set Up
 
 1. **Install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop)
 
@@ -96,7 +149,7 @@ Make sure you run this in an Admin PowerShell to let you run scripts:
 Set-ExecutionPolicy RemoteSigned
 ```
 
-### Running
+### 2. Running
 
 1. Modify the `work` variable at the top of the run script in the project folder.
    For example:
@@ -139,7 +192,7 @@ Set-ExecutionPolicy RemoteSigned
 
 This script is only a wrapper for some simple Docker commands.
 
-### Working in the Environment
+### 3. Working in the Environment
 
 To start up a Linux shell inside the Docker image, you'll want to start a terminal session inside the Docker image:
 
@@ -170,7 +223,7 @@ for use in QEMU later. This assumes that the Makefile exists in the project dire
 .\run.ps1 build
 ```
 
-### Exiting the Environment
+### 4. Exiting the Environment
 
 To quit qemu and return to Linux shell:
 
@@ -185,7 +238,7 @@ You may get better performance by only using the build toolchain in the containe
 installing it through Homebrew or your package manager of choice. This is because newer versions of GCC no longer
 compile the bootloader correctly. You can also get QEMU to run graphically this way!
 
-### Stopping
+### 5. Stopping
 
 After you're done working in the environment, you might want to stop the container. Don't worry if you forget to
 do this, since Docker Desktop will automatically and safely stop running containers when you shutdown your computer.
@@ -208,14 +261,6 @@ Here's what it looks like to interact with a setup environment:
 
 [![asciicast](https://asciinema.org/a/308534.svg)](https://asciinema.org/a/308534)
 
-## Container Helper
-
-If you don't want to navigate to your docker directory every time, you can check
-out [Container Helper](https://github.com/camerondurham/ch#quick-start) for a
-simple command-line interface. The README includes a one-liner to create the
-same cs350 environment included in the repository
-[here](https://github.com/camerondurham/ch#create-the-csci-350-environment).
-
 ## System Requirements
 
 Below are the system requirements for Docker Desktop:
@@ -236,7 +281,7 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 
 [Linux host](https://docs.docker.com/engine/install/):
 
-- Use the Docker-provided install instructions if it exists for your distro, otherwise 
+- Use the Docker-provided install instructions if it exists for your distro
 
 ## Troubleshooting
 
