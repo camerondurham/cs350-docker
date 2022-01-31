@@ -8,6 +8,8 @@ CONTAINER_NAME 	?= xv6-test
 build:
 	docker build -t $(REPO):$(TAG) .
 
+buildx:
+	docker buildx build --platform linux/amd64 -t $(REPO):$(TAG) .
 
 run:
 	docker run --rm -d \
