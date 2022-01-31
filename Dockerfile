@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu \
     qemu-system-common \
     rsync \
-    zsh \
     && apt-get autoclean -y \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* \

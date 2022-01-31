@@ -122,9 +122,6 @@ ch shell csci350 --force-start
 
 See the `ch` README [Command section](https://github.com/camerondurham/ch) or `ch --help` for other commands.
 
-#### 4. Customizing your Environment (optional)
-
-
 ## Getting Started (run scripts)
 
 Skip this section if you followed **Getting Started (ch)** instructions since
