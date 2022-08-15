@@ -70,10 +70,17 @@ This Docker image has been tested and verified to be functioning correctly on th
 Skip to the **Getting Started (run scripts)** section if you do not want to install `ch`.
 
 If you have the container helper CLI (`ch`) installed already, this is the
-fastest way to start. See [instructions here](https://github.com/camerondurham/ch#quick-start) to install `ch`. (full disclosure, this is a shameless plug since I wrote the CLI but I do at least dogfood my own tools!).
+fastest way to start. See detailed instructions [here](https://github.com/camerondurham/ch#quick-start) to install `ch`. (full disclosure, this is a shameless plug since I wrote the CLI but I do at least dogfood my own tools!).
 
 Benefits of installing this way is that you don't have to be in a specific directory to start the csci350 environment.
 Also, you won't have to clone this repo to get started since your main dependency is the Docker image with `qemu` and `gdb` installed.
+
+Simplest solution to install `ch` (at least on macOS) is if you have homebrew. See the  [getting started](https://github.com/camerondurham/ch#quick-start) notes to run the install script for Windows or Unix-based system.
+
+```bash
+brew tap camerondurham/tap
+brew install camerondurham/tap/ch
+```
 
 ### 1. Find the Filepath to Your Work Directory
 
