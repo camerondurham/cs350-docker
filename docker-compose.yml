@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   gdbserver:
@@ -12,6 +12,7 @@ services:
       - "7777:7777"
       - "25000:25000"
     volumes:
-        - ${work}:/xv6_docker/
+      - ${work}:/xv6_docker/
     working_dir: /xv6_docker/
     hostname: xv6_host
+    platform: linux/amd64
