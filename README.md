@@ -31,6 +31,7 @@
     - [xv6 will not start shell, hangs at qemu command](#xv6-will-not-start-shell-hangs-at-qemu-command)
     - [make qemu fails](#make-qemu-fails)
     - [Makefile:104: recipe for target 'bootblock' failed](#makefile104-recipe-for-target-bootblock-failed)
+    - [xv6 stuck on qemu-system-i386 macOS Apple Silicon](#xv6-stuck-on-qemu-system-i386-macos-apple-silicon)
     - [xv6 stuck on qemu-system-i386 Windows](#xv6-stuck-on-qemu-system-i386-windows)
       - [Docker Desktop Setting Screenshots](#docker-desktop-setting-screenshots)
 
@@ -323,6 +324,12 @@ make clean
 chmod 755 *.pl cuth dot-bochsrc printpcs runoff runoff1 show1 spinp
 make qemu-nox
 ```
+
+### xv6 stuck on qemu-system-i386 macOS Apple Silicon
+
+If your shell is stuck on  `qemu-system-i386 -nographic -drive ...` after running `make qemu-nox` or returns an error `rosetta error: Unimplemented syscall number 282`, you may need to disable Rosetta emulation in Docker.
+
+Uncheck the "Use Rosetta for x86/amd64 emulation on Apple Silicon" option in Docker Settings > General. (thank you to @WardahJabeen for this suggestion in [#13](https://github.com/camerondurham/cs350-docker/issues/13#issuecomment-1904634853)!).
 
 ### xv6 stuck on qemu-system-i386 Windows
 
