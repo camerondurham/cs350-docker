@@ -113,15 +113,17 @@ ch create csci350 \
     --port 25000:25000 \
     --cap-add SYS_PTRACE \
     --shell /bin/bash \
-    --privileged
+    --privileged \
+    --platform linux/amd64
 ```
 
 Below is the single-line version for Windows. Please remember to replace `PATH_TO_YOUR_WORKDIR` wirh the path from part 1.
 
 ```
-ch create csci350 --image camerondurham/cs350-docker:v1 --volume PATH_TO_YOUR_WORKDIR:/xv6_docker --security-opt seccomp:unconfined --port 7776:22 --port 7777:7777 --port 25000:25000 --cap-add SYS_PTRACE --shell /bin/bash --privileged
+ch create csci350 --image camerondurham/cs350-docker:v1 --volume PATH_TO_YOUR_WORKDIR:/xv6_docker --security-opt seccomp:unconfined --port 7776:22 --port 7777:7777 --port 25000:25000 --cap-add SYS_PTRACE --shell /bin/bash --privileged --platform linux/amd64
 ```
 
+> **NOTE**: The command above requires `ch` version at least `v0.3.7`. Refer to [install instructions](https://github.com/camerondurham/ch#step-2-install-ch) if you see errors about non-existent `--platform` flag.
 
 ### 3. Start the Environment
 
